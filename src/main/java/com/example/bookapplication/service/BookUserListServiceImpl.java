@@ -6,8 +6,8 @@ import com.example.bookapplication.data.model.UserWishList;
 import com.example.bookapplication.data.repository.BookRepository;
 import com.example.bookapplication.data.repository.BookUserRepository;
 import com.example.bookapplication.data.repository.WishListRepository;
-import com.example.bookapplication.dto.WishListRequestDto;
-import com.example.bookapplication.dto.WishListResponseDto;
+import com.example.bookapplication.dto.BookUserRequestDto;
+import com.example.bookapplication.dto.BookUserResponseDto;
 import com.example.bookapplication.web.exception.BookDoesNotExistException;
 import com.example.bookapplication.web.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class UserwishListServiceImpl implements UserwishListService{
+public class BookUserListServiceImpl implements BookUserListService {
 
     @Autowired
     WishListRepository wishListRepository;
@@ -28,7 +28,7 @@ public class UserwishListServiceImpl implements UserwishListService{
     BookRepository bookRepository;
 
     @Override
-    public WishListResponseDto addBookTowishList(WishListRequestDto wishListRequestDto) throws UserNotFoundException, BookDoesNotExistException {
+    public BookUserResponseDto addBookTowishList(BookUserRequestDto wishListRequestDto) throws UserNotFoundException, BookDoesNotExistException {
 
         Optional<BookUser> query = bookUserRepository.findById(wishListRequestDto.getUserId());
         if (query.isEmpty()){
@@ -43,18 +43,16 @@ public class UserwishListServiceImpl implements UserwishListService{
         }
         myWishList.addBookToList(book);
         wishListRepository.save(myWishList);
-
-
         return buildCartResponse(myWishList);
     }
 
-    private WishListResponseDto buildCartResponse(UserWishList wishList) {
-        return WishListResponseDto.builder().bookList(wishList.getFavoriteBookList()).build();
+    private BookUserResponseDto buildCartResponse(UserWishList wishList) {
+        return BookUserResponseDto.builder().bookList(wishList.getFavoriteBookList()).build();
     }
 
 
     @Override
-    public WishListResponseDto viewWishList(Long userId) throws UserNotFoundException {
+    public BookUserResponseDto viewWishList(Long userId) throws UserNotFoundException {
         BookUser bookUser = bookUserRepository.findById(userId).orElse(null);
         if (bookUser == null) {
             throw new UserNotFoundException("User with id" + userId + "does not exist");

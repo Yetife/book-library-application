@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @Builder
-public class WishListResponseDto {
+public class BookUserResponseDto {
 
     private List<Book> bookList;
 }

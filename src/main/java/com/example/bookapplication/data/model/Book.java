@@ -15,6 +15,9 @@ public class Book {
     @Column(unique = true, nullable = false)
     private String title;
     private String author;
+    private String description;
     private int yearOfPublishing;
     private String imageUrl;
+    private int pageCount;
+    private BookStatus bookStatus;
 }

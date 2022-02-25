@@ -9,13 +9,18 @@ import java.util.List;
 
 @Entity
 @Data
-public class UserBookList {
+public class UserWishList {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @CreationTimestamp
     private LocalDateTime addedAt;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Book> favoriteBookList;
+
+    public void addBookToList(Book book) {
+        if (book == null)
+            favoriteBookList.add(book);
+    }
 }

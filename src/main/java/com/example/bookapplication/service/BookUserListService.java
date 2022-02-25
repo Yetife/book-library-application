@@ -1,13 +1,13 @@
 package com.example.bookapplication.service;
 
-import com.example.bookapplication.dto.WishListRequestDto;
-import com.example.bookapplication.dto.WishListResponseDto;
+import com.example.bookapplication.dto.BookUserRequestDto;
+import com.example.bookapplication.dto.BookUserResponseDto;
 import com.example.bookapplication.web.exception.BookDoesNotExistException;
 import com.example.bookapplication.web.exception.UserNotFoundException;
 
-public interface UserwishListService {
+public interface BookUserListService {
 
-    WishListResponseDto addBookTowishList(WishListRequestDto wishListRequestDto) throws UserNotFoundException, BookDoesNotExistException;
-    WishListResponseDto viewWishList(Long userId) throws UserNotFoundException;
+    BookUserResponseDto addBookTowishList(BookUserRequestDto wishListRequestDto) throws UserNotFoundException, BookDoesNotExistException;
+    BookUserResponseDto viewWishList(Long userId) throws UserNotFoundException;
 
 }
