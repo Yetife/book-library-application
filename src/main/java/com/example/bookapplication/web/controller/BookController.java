@@ -19,6 +19,7 @@ public class BookController{
 
     @GetMapping()
     public ResponseEntity<?> findAllBooks() {
-        List<Book> books = bookService.getAllBooks();
+        List<Book> bookList = bookService.getAllBooks();
+        return ResponseEntity.ok().body(bookList);
     }
 }

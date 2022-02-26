@@ -31,13 +31,12 @@ public class BookServiceImpl implements BookService{
         book.setImageUrl(bookdto.getImageUrl());
         book.setBookStatus(bookdto.getBookStatus());
 
-        return bookRepository.save(book);
-//
 //        public void addBookToList(Book book) {
 //            if (book == null)
 //                favoriteBookList.add(book);
 //
 //        }
+        return bookRepository.save(book);
     }
 
     @Override

@@ -17,7 +17,14 @@ public class BookUser {
     private String firstName;
     private String lastName;
     private String email;
+    private String password;
     private  String address;
+
+    private boolean enabled;
+
+    @ElementCollection
+    private List<Authority> authorities;
+
     @CreationTimestamp
     private LocalDateTime dateCreated;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

@@ -18,6 +18,5 @@ public class Book {
     private String description;
     private int yearOfPublishing;
     private String imageUrl;
-    private int pageCount;
     private BookStatus bookStatus;
 }
