@@ -4,8 +4,10 @@ import lombok.Data;
 
 @Data
 public class BookUserRequestDto {
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
+    private String address;
 
-    private Long BookId;
-    private String Title;
-    private Long userId;
 }

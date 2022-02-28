@@ -1,5 +1,6 @@
 package com.example.bookapplication.data.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BookUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,8 +18,14 @@ public class BookUser {
 
     private String firstName;
     private String lastName;
+
+    @Column(unique = true, nullable = false)
     private String email;
+
+    @Column(nullable = false)
     private String password;
+
+    @Column(length = 500)
     private  String address;
 
     private boolean enabled;
@@ -30,7 +38,6 @@ public class BookUser {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Book> favoriteBookList;
     private BookStatus bookStatus;
-
 
 
     public void addBookToList(Book book) {
