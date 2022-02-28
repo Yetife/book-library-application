@@ -9,6 +9,8 @@ import java.util.List;
 @Data
 @Builder
 public class BookUserResponseDto {
-
-    private List<Book> bookList;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String address;
 }
